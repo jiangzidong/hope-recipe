@@ -26,7 +26,7 @@ ARCHFLAGS ?= ""
 do_configure () {
     export LD="${CXX}"
 
-    ./configure --prefix=${prefix} --without-snapshot --shared-openssl ${ARCHFLAGS}
+    ./configure --prefix=${prefix} ${ARCHFLAGS}
 }
 
 do_compile () {
