@@ -11,21 +11,34 @@ line 158
 6. /edison-src/out/linux64/poky/meta-intel-iot-middleware/recipes-devtools/nodejs edit the bb file
 
   ```
-LIC_FILES_CHKSUM = "file://LICENSE;md5=14115ff11211df04b031ec7d40b6d31b"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=96aa1ac122c41f8c08a0683d4b2126b5"
 
 DEPENDS = "openssl"
 DEPENDS_class-target = "nodejs-native"
 
-SRC_URI = "http://nodejs.org/dist/v0.12.0/node-v0.12.0.tar.gz"
+SRC_URI = "http://nodejs.org/dist/v4.4.4/node-v4.4.4.tar.gz"
 
-RC_URI[md5sum] = "62c8d9c74c8f68193f60e4cba020eb48"
-SRC_URI[sha256sum] = "9700e23af4e9b3643af48cef5f2ad20a1331ff531a12154eef2bfb0bb1682e32"
+SRC_URI[md5sum] = "1a0f41618b8290a9e96a5dc5d53c7b9d"
+SRC_URI[sha256sum] = "53c694c203ee18e7cd393612be08c61ed6ab8b2a165260984a99c014d1741414"
+
 
 INSANE_SKIP_${PN} = "installed-vs-shipped "
-S = "${WORKDIR}/node-v0.12.0"
+S = "${WORKDIR}/node-v4.4.4"
+
   ```
 7. /edison-src/out/linux64/poky/meta-intel-iot-middleware/recipes-devtools/mraa
-`SRC_URI = "git://github.com/intel-iot-devkit/mraa.git;protocol=git;rev=ea183b37388d96d51ab8cb64712259e86a03c465;nobranch=1"`
+
+```
+LIC_FILES_CHKSUM = "file://COPYING;md5=66493d54e65bfc12c7983ff2e884f37f"
+
+# git is required to get a good version from git describe
+DEPENDS = "nodejs swig-native"
+
+SRC_URI = "git://github.com/intel-iot-devkit/mraa.git;protocol=git;rev=3969af2b244f250245ae14e7f090fdd2d94e9858;nobranch=1"
+
+S = "${WORKDIR}/git"
+INSANE_SKIP_${PN} += "rpaths"
+```
 8. remove iotkit-xxx, upm, xdk-deamon in /edison-src/out/linux64/poky/meta-intel-iot-middleware/recipes-devtools
 and remove those pakage in edison-src /meta-intel-edison/meta-intel-edison-distro/recipes-core/images/edison-image.bb file
 9. add x11 support  ~/edison-src/meta-intel-edison/meta-intel-edison-distro/conf/distro/poky-edison.conf

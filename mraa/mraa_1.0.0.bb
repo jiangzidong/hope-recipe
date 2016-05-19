@@ -3,14 +3,15 @@ SECTION = "libs"
 AUTHOR = "Brendan Le Foll, Tom Ingleby"
 
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://COPYING;md5=e8db6501ed294e65418a933925d12058"
+LIC_FILES_CHKSUM = "file://COPYING;md5=66493d54e65bfc12c7983ff2e884f37f"
 
 # git is required to get a good version from git describe
 DEPENDS = "nodejs swig-native"
 
-SRC_URI = "git://github.com/intel-iot-devkit/mraa.git;protocol=git;rev=ea183b37388d96d51ab8cb64712259e86a03c465;nobranch=1"
+SRC_URI = "git://github.com/intel-iot-devkit/mraa.git;protocol=git;rev=3969af2b244f250245ae14e7f090fdd2d94e9858;nobranch=1"
 
 S = "${WORKDIR}/git"
+INSANE_SKIP_${PN} += "rpaths"
 
 inherit distutils-base pkgconfig python-dir cmake
 
